@@ -34,7 +34,7 @@ function showPreloader(evt){
     preloader.style.display = 'block';
     setTimeout(function(){
         preloader.setAttribute('src', 'img/mail.gif');
-        sendBtn.setAttribute('disabled', 'disabled');
+        sendBtn.disabled = true;
     }, 3000)
 };
 
@@ -56,12 +56,15 @@ message.addEventListener('blur', checkMessageField);
 form.addEventListener('submit', handleForm);
 
 resetBtn.addEventListener('click', function(){
+    //reset styles at msg fields
     email.style.cssText = defaultFieldStyles;
     subject.style.cssText = defaultFieldStyles;
     message.style.cssText = defaultFieldStyles;
+    //reset preloader img and hide it
     preloader.style.display = 'none';
-    sendBtn.removeAttribute('disabled');
-
+    preloader.setAttribute('src', 'img/spinner.gif');
+    //block send btn
+    sendBtn.disabled = false;
 });
 
 
